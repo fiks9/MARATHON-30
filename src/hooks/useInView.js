@@ -13,15 +13,23 @@ import { useEffect, useRef, useState } from "react";
  * @param {string}  [options.rootMargin="0px 0px -40px 0px"]
  * @param {boolean} [options.once=true]        If false, will toggle each
  *                                              time the element enters/leaves.
+ * @param {boolean} [options.initialInView=false]
+ *                                              Initial value before the
+ *                                              observer has had a chance to
+ *                                              report. Useful for content
+ *                                              that may already be on-screen
+ *                                              on first paint (deep links,
+ *                                              refreshes); see improve.md §1.6.
  * @returns {[React.RefObject, boolean]}
  */
 export default function useInView({
   threshold = 0.15,
   rootMargin = "0px 0px -40px 0px",
   once = true,
+  initialInView = false,
 } = {}) {
   const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(initialInView);
 
   useEffect(() => {
     const node = ref.current;

@@ -1,4 +1,5 @@
 import SpotCounter from "./SpotCounter.jsx";
+import { COHORT } from "../../config/cohort.js";
 
 const bars = [
   { height: "40%", color: "bg-surface-variant", label: "Day 1", labelColor: "text-on-surface-variant" },
